@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db_esme:
     image: postgres:13
@@ -10,7 +8,7 @@ services:
       POSTGRES_PASSWORD: mot_de_passe
       POSTGRES_DB: esme_inge
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -20,7 +18,7 @@ services:
     depends_on:
       - db_esme
     environment:
-      - DATABASE_URL=postgresql://myuser:mot_de_passe@db_esme:5432/esme_inge
+      - DATABASE_URL=postgresql://myuser:mot_de_passe@db_esme:5432/esme_inge  # Changement ici du port
     ports:
       - "5009:5000"
     volumes:
